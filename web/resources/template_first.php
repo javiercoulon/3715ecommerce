@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<title>ECommerce | <?php echo isset($PAGE_TITLE)?$PAGE_TITLE:"-";?></title>
+                <meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="<?php echo $_CSSURL."bootstrap.min.css"?>">
 		<?php 
 		
@@ -10,7 +11,7 @@
 		?>
 	</head>
 	<body>
-		<div class="main_container">
+		<div class="main_container container">
 			<div>
 				<?php include_once $_RESOURCESPATH."header.php";?>
 			</div>
