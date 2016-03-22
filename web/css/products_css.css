@@ -2,11 +2,19 @@
 		float: left;
 		border: red solid 2px;
 		border-radius: 5px;
-		padding: 5px;
+		padding: 10px;
 		margin: 5px;
 		padding-bottom: 0px;
 		position: relative;
+                min-height: 350px;
+                max-height: 350px;
+                min-width:  250px;
+                max-width:  250px;
 	}
+        
+        .product_container_incart{
+            border: green solid 2px;
+        }
 
 	 .product_description_container{
 		position: absolute;
@@ -26,8 +34,10 @@
 		color: white;
 	}
 	.product_pure_image{
-		max-width: 300px;
-		max-height: 300px;
+		max-width: 200px;
+		max-height: 200px;
+		min-width: 200px;
+		min-height: 200px;                
 	}
 
 	.product_title{
@@ -71,4 +81,26 @@
 	.product_options{
 		padding: 10px;
 		color: white;
+                margin-top: -10px;
 	}
+        
+        #products_container{
+            margin-bottom: 50px;
+        }
+        
+        .product_pagination{
+            text-align: center;
+            clear: both;
+        }
+        
+        #checkout_btn{
+            visibility: hidden;
+        }
+        
+        .notification_square{
+            position: absolute;
+            display: inline-block;
+        }
+        #notification_success,#notification_error{
+            display: none;
+        }

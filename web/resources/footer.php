@@ -9,7 +9,7 @@
                 <div class="foot-links">
                     <ul class="list-group">
                         <li class="list-group-item">Francisco Coulon</li>
-                        <li class="list-group-item">Missing</li>
+                        <li class="list-group-item">Enweremadu Chinedu .G.</li>
                         <li class="list-group-item">Missing</li>
 
                     </ul>
