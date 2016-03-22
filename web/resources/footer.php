@@ -60,6 +60,8 @@
       #footer {
         background-color: #f5f5f5;
         padding: 5px;
+        clear: both;
+        margin-top: 10px;
       }
 
 
