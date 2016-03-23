@@ -1,0 +1,26 @@
+.question_container{
+    box-shadow: 0 0 35px orangered;
+    padding: 20px;
+    margin-bottom: 15px;
+
+}
+.question_container:nth-child(even){
+    border-radius: 0 25px;
+}
+.question_container:nth-child(odd){
+    border-radius:25px 0 ;
+}    
+
+.question_title{
+    font-family: cursive;
+    font-size: 1.2em;
+    font-weight: 900;
+}
+
+.response_container:before{
+    content: 'R/ ';
+}
+.img_faq{
+    max-width: 100%;
+    max-height: 100%;
+}

@@ -16,7 +16,7 @@ if (isset($_REQUEST['operation']) && !empty($_REQUEST['operation'])) {
 $limit=8;
 $offset=0;
 $default_sql = "SELECT fp_product.product_id,name,description,price,quantity,registration_date,category_id,stock_id,weight,color,status,observations,discount,details
- FROM fp_product,fp_product_images where fp_product.product_id=fp_product_images.product_id";
+ FROM fp_product,fp_product_images where fp_product.product_id=fp_product_images.product_id and quantity>0 ";
 
 $selection = $_SESSION["selection"];
 if (!isset($selection) || empty($selection)) {
@@ -26,26 +26,28 @@ if (!isset($selection) || empty($selection)) {
 switch ($operation) {
     case 'init_load':
         //initial load
-        $result = mysqli_query($db, $default_sql." limit ".$limit." offset ".$offset);
+        $result = mysqli_query($db, $default_sql."   limit ".$limit." offset ".$offset);
         $products=array();
        // var_dump($result);
        // echo $default_sql;
         while ($result && ($row = mysqli_fetch_assoc($result))) {
+            if($row['quantity']>0){
             //echo 'entree';
-           $product=array(
-                "product_id" => $row['product_id'],
-                "product_title" =>$row['name'],
-                "product_image" => $row['details'],
-                "product_description" => $row['description'],
-                "product_weigh" => $row['weight'],
-                "product_color" =>$row['color'],
-                "product_status" => $row['status'],
-                "product_observation" => $row['observations'],
-                "product_discount" => $row['discount'],
-                "category_id" => $row['category_id'],  
-                "product_quantity"=>$row['quantity']  
-           );
-           array_push($products,$product);
+                $product=array(
+                     "product_id" => $row['product_id'],
+                     "product_title" =>$row['name'],
+                     "product_image" => $row['details'],
+                     "product_description" => $row['description'],
+                     "product_weigh" => $row['weight'],
+                     "product_color" =>$row['color'],
+                     "product_status" => $row['status'],
+                     "product_observation" => $row['observations'],
+                     "product_discount" => $row['discount'],
+                     "category_id" => $row['category_id'],  
+                     "product_quantity"=>$row['quantity']  
+                );
+                array_push($products,$product);
+            }
         }
         //get how many products are
         
@@ -90,7 +92,7 @@ switch ($operation) {
                                     <span class="product_option_label">Quantity</span>
 
                                     <span class="product_option_command">
-                                        <input type="number" min="0" max="5" value="<?php echo $value;?>" class="form-control product_quantity ">
+                                        <input type="number" min="0" max="<?php echo $product['product_quantity'];?>" value="<?php echo $value;?>" class="form-control product_quantity ">
                                     </span>								
                                 </div>
                                 <div class="col-xs-12 col-md-6">

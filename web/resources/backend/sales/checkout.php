@@ -36,10 +36,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             while (list($key, $value) = each($selection)) {
                 $result = mysqli_query($db, "INSERT INTO `fp_sale details` (sale_id,product_id,quantity)
                                              VALUES('" . $sell_id . "','" . $key . "','" . $value . "');");
+                $result = mysqli_query($db, "UPDATE fp_product SET quantity = (quantity-".$value.") WHERE product_id='" . $key . "'");
+                
             }
             //create notifications
             //redirect to my buy
             //unset selection
+            unset($_SESSION["selection"]);
             header("Location: " . $_SERVERURLROOT);
         }
     }

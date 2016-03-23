@@ -14,17 +14,18 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Products</a></li>
-                    <li><a href="#">Sales</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="<?php echo $_SERVERURLROOT?>">Home</a></li>
+                    <li><a href="<?php echo $_SERVERURLROOT.'pages/products/'?>">Products</a></li>
+                    <li><a href="<?php echo $_SERVERURLROOT.'pages/sales/mysales.php'?>">Sales</a></li>
+                    <li><a href="<?php echo $_SERVERURLROOT.'pages/about.php'?>">About</a></li>
+                    <li><a href="<?php echo $_SERVERURLROOT.'pages/faq.php'?>">FAQs</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Personal Area <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">My requests</a></li>
+                            <li><a href="<?php echo $_SERVERURLROOT.'pages/user/profile.php'?>">Profile</a></li>
+                            <li><a href="<?php echo $_SERVERURLROOT.'pages/sales/mysales.php'?>">My requests</a></li>
                             <li role="separator" class="divider"></li>
                             <li class="dropdown-header">Session Options</li>
                             <li><a href="#">Logout</a></li>
