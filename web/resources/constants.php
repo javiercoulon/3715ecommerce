@@ -5,5 +5,6 @@
 	$_CSSURL=$_SERVERURLROOT."css/";
 	$_JSURL=$_SERVERURLROOT."js/";
 	$_IMAGESURL=$_SERVERURLROOT."resources/imgs/";
+	$_IMAGESPATH=$_MYSERVERFILEROOT."/resources/imgs/";
 	
 ?>
