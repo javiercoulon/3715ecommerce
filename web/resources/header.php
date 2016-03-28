@@ -23,13 +23,26 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Personal Area <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="<?php echo $_SERVERURLROOT.'pages/user/profile.php'?>">Profile</a></li>
-                            <li><a href="<?php echo $_SERVERURLROOT.'pages/sales/mysales.php'?>">My requests</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li class="dropdown-header">Session Options</li>
-                            <li><a href="#">Logout</a></li>
-                        </ul>
+                        <?php 
+                            session_start();
+                            if(isset($_SESSION['LOGGED_IN'])&&!empty($_SESSION['LOGGED_IN'])){
+                        ?>
+                            <ul class="dropdown-menu">
+                                <li><a href="<?php echo $_SERVERURLROOT.'pages/user/profile.php'?>">Profile</a></li>
+                                <li><a href="<?php echo $_SERVERURLROOT.'pages/sales/mysales.php'?>">My requests</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li class="dropdown-header">Session Options</li>
+                                <li><a href="<?php echo $_SERVERURLROOT.'resources/backend/users/logout.php'?>">Logout</a></li>
+                            </ul>
+                        <?php
+                            }else{
+                        ?>
+                             <ul class="dropdown-menu">
+                                <li><a href="<?php echo $_SERVERURLROOT.'pages/user/login.php'?>">Login</a></li>
+                                <li><a href="<?php echo $_SERVERURLROOT.'pages/user/register.php'?>">Sign up</a></li>
+                            </ul>
+                         <?php }?>
+                        
                     </li>
                 </ul>
             </div><!--/.nav-collapse -->

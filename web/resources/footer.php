@@ -10,7 +10,6 @@
                     <ul class="list-group">
                         <li class="list-group-item">Francisco Coulon</li>
                         <li class="list-group-item">Enweremadu Chinedu .G.</li>
-                        <li class="list-group-item">Missing</li>
 
                     </ul>
                 </div>
@@ -20,9 +19,8 @@
                 </div>
                 <div class="foot-links">
                     <ul class="list-group">
-                        <li class="list-group-item"><a href="#">Home</a></li>
-                        <li class="list-group-item"><a href="#">About us</a></li>
-                        <li class="list-group-item"><a href="#">Profile</a></li>
+                        <li class="list-group-item"><a href="<?php echo $_SERVERURLROOT;?>">Home</a></li>
+                        <li class="list-group-item"><a href="<?php echo $_SERVERURLROOT;?>/pages/about.php">About us</a></li>
                     </ul>
                 </div>
             </div>
