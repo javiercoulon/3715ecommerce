@@ -24,8 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $result = mysqli_query($db, "INSERT INTO fp_sell(sell_date,user_id,sell_state,observation,pmethod_id,required_date,sell_code,shipper_name)
                                      VALUES('now()','" . $sale_user . "','" . $sale_state . "','" . $observations . "','" . $pmethod . "','" . $requiredate . "','" . $sale_code . "','" . $shipper . "');");
-        echo "INSERT INTO fp_sell(sell_date,user_id,sell_state,observation,pmethod_id,required_date,sell_code,shipper_name)
-                                     VALUES(now(),'" . $sale_user . "','" . $sale_state . "','" . $observations . "','" . $pmethod . "','" . $requiredate . "','" . $sale_code . "','" . $shipper . "');";
         if ($result) {
             //select last inserted id
             $sell_id = mysqli_insert_id($db);

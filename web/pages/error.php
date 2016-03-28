@@ -1,5 +1,4 @@
 <?php
-echo 'called';
 $PAGE_TITLE = "Error"; //actual title
 if(isset($_POST['error'])){
     $error_message=$_POST['error'];
