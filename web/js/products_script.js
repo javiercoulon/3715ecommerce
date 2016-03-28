@@ -31,11 +31,18 @@ $(document).ready(function() {
         position: "absolute",
         top: offset.top + 50, left: offset.left
     });
-     $('#notification_error').css({
+    $('#notification_error').css({
         position: "absolute",
         top: offset.top + 50, left: offset.left
-    });   
-    
+    });
+
+    $("#checkout_btn").click(function(e) {
+        // alert('hellow')
+        e.preventDefault();
+        window.location.assign(CHECKOUT_URL);
+
+
+    });
 
 });
 
@@ -55,52 +62,62 @@ function addEventToProducts() {
         var product_quantity = parseInt(product_quantity_container.val());
         //alert(product_id + " q: " + product_quantity);
         //console.info(product_quantity.val())
-        sendAddRequest(product_id, product_quantity,product_container);
+        sendAddRequest(product_id, product_quantity, product_container);
 
     });
 }
 
-function sendAddRequest(id, quantity,container) {
+function sendAddRequest(id, quantity, container) {
     $.ajax({
         type: "POST",
         data: {product_id: id, product_quantity: quantity},
         url: BACKEND_URL + "add_to_cart.php",
         success: function(msg) {
             console.info(msg);
-            updateCartStatusList((msg),container);
+            console.info(msg.error.msg)
+            if (msg.error) {
+                var $form = $(document.createElement('form')).css({display: 'none'}).attr("method", "POST").attr("action", E_URL);
+                var $input = $(document.createElement('input')).attr('name', 'error').val(msg.error.msg);
+                $form.append($input);
+                $("body").append($form);
+                $form.submit();
+            } else {
+                updateCartStatusList((msg), container);
+            }
+
             //show message
         }
     });
 }
 
-function updateCartStatusList(json,container) {
+function updateCartStatusList(json, container) {
     if (json && json.success && json.success == 1) {
         var nofitems = parseInt(json.number_of_items);
         if (nofitems > 0) {
             $("#product_numbers").html("<b>" + nofitems + "</b>")
             $("#checkout_btn").css("visibility", "visible");
-            
+
         } else {
             $("#checkout_btn").css("visibility", "hidden");
-             
+
         }
         animateElement($('#notification_success'));
-    }else{
+    } else {
         animateElement($('#notification_error'));
     }
-    if(json.params.product_quantity>0){
+    if (json.params.product_quantity > 0) {
         container.addClass('product_container_incart');
-    }else{
+    } else {
         container.removeClass('product_container_incart');
     }
-    
-    
+
+
 }
-function animateElement(element){
+function animateElement(element) {
     element.fadeIn();
-    setTimeout(function(){
+    setTimeout(function() {
         element.fadeOut('slow');
-    },2000);
+    }, 2000);
 }
 function addEventToPagination() {
     $(".btn_pagination").click(function(e) {
@@ -165,7 +182,7 @@ function updateProductsList(json) {
             var product = json.products[i];
             console.info(product)
             var newHtml = '';
-            newHtml += '<div class="product_container '+((!isNaN(product.product_incart)&&parseInt(product.product_incart)>0)?"product_container_incart":"")+'">'
+            newHtml += '<div class="product_container ' + ((!isNaN(product.product_incart) && parseInt(product.product_incart) > 0) ? "product_container_incart" : "") + '">'
             newHtml += '      <input type="hidden" name="product_id" value="' + product.product_id + '" class="product_id_container">'
             newHtml += '      <div class="product_details">';
             newHtml += '          <div class="product_title">';
@@ -188,7 +205,7 @@ function updateProductsList(json) {
             newHtml += '                      <div class="col-xs-12 col-md-6">';
             newHtml += '                          <span class="product_option_label">Quantity</span>';
             newHtml += '                          <span class="product_option_command">';
-            newHtml += '                              <input type="number" min="0" value="'+((!isNaN(product.product_incart)&&parseInt(product.product_incart)>0)?product.product_incart:"")+'" max="' + product.product_quantity + '" class="form-control product_quantity">';
+            newHtml += '                              <input type="number" min="0" value="' + ((!isNaN(product.product_incart) && parseInt(product.product_incart) > 0) ? product.product_incart : "") + '" max="' + product.product_quantity + '" class="form-control product_quantity">';
             newHtml += '                          </span>';
             newHtml += '                      </div>';
             newHtml += '                      <div class="col-xs-12 col-md-6">';

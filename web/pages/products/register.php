@@ -4,8 +4,8 @@
 	$PAGE_TITLE="New Product";//actual title
 	$PAGE_CSSs=array();//your needed css
 	$PAGE_JSs=array();// your needed js
-	error_reporting(E_ALL);
-	
+
+	$_APP_LOGGEDREQUIRED=true;
 	include_once $_RESOURCESPATH."template_first.php";
 ?>
 

@@ -62,6 +62,8 @@ echo "<script>
               NOFITEMS='" . count($selection) . "';
               BACKEND_URL='" . $_SERVERURLROOT . "resources/backend/products/';
               IMAGE_URL='" . $_SERVERURLROOT . "resources/imgs/products/';
+              CHECKOUT_URL='" . $_SERVERURLROOT . "pages/sales/checkout.php'; 
+              E_URL='" . $_SERVERURLROOT . "pages/error.php'; 
       </script>";
 include_once $_RESOURCESPATH . "template_last.php";
 ?>

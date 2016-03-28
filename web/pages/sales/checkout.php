@@ -5,6 +5,7 @@ $PAGE_TITLE = "Checkout"; //actual title
 $PAGE_CSSs = array(); //your needed css
 $PAGE_JSs = array(); // your needed js
 require_once $_RESOURCESPATH . 'connection.php';
+$_APP_LOGGEDREQUIRED=true;
 include_once $_RESOURCESPATH . "template_first.php";
     
 ?>

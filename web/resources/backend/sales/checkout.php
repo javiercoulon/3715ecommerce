@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+$_APP_LOGGEDREQUIRED=true;
 require_once "../../constants.php";
 require_once $_RESOURCESPATH . 'connection.php';
 $selection = $_SESSION["selection"];

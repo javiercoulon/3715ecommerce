@@ -1,17 +1,23 @@
 <?php
+
 error_reporting(0);
 session_start();
+
 
 $selection = $_SESSION["selection"];
 
 if (!isset($selection) || empty($selection)) {
     $selection = array();
-   // echo 'entree crear';
+    // echo 'entree crear';
 }
+require_once '../../constants.php';
 $resp = array();
+$_APP_LOGGEDREQUIRED = true;
+$APP_ASINC = true;
+include_once $_RESOURCESPATH . 'security.php';
 header("Content-Type: application/json");
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-   
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($GENERALERROR)) {
+
     $product_id = $_POST['product_id'];
     $product_quantity = $_POST['product_quantity'];
     $resp['params'] = array("product_id" => $product_id, "product_quantity" => $product_quantity);
@@ -28,12 +34,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $resp["success"] = 0;
     }
- //echo 'entree';
+    //echo 'entree';
     $resp["number_of_items"] = count($selection);
     $_SESSION["selection"] = $selection;
- 
-}else{
-    $resp["error"]="not recognized";
-}   
+} else {
+    $resp["error_main"] = "not recognized";
+}
 echo json_encode($resp);
 ?>
